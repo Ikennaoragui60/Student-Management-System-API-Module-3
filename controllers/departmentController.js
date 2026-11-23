@@ -9,7 +9,7 @@ exports.createDepartment = async (req, res) => {
   }
 };
 
-exports.getDepartments = async (req, res) => {
+exports.getAllDepartments = async (req, res) => {
   try {
     const departments = await Department.find();
     res.json(departments);
