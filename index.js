@@ -3,7 +3,7 @@ env.config();
 const express = require("express");
 require("./db");
 
-const app = express(); 
+const app = express();
 
 
 app.use(express.json());
@@ -13,6 +13,6 @@ app.use("/courses", require("./routes/courseRoutes"))
 app.use("/lecturers", require("./routes/lecturerRoutes"))
 app.use("/registrations", require("./routes/registrationRoutes"))
 
-app.get("/",(req,res)=>{res.send("Hello my fellow Programmer, Hope we are all doing great today, well, we were given a project on Student Management System API")});
+app.get("/", (req, res) => { res.send("Hello my fellow Programmer, Hope we are all doing great today, well, we were given a project on Student Management System API") });
 
-app.listen(2027,()=>{console.log("My app is running on port 2027")})
+app.listen(2027, () => { console.log("My app is running on port 2027") })

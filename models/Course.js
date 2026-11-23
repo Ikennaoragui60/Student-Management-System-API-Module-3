@@ -2,12 +2,12 @@ const mongoose = require("mongoose");
 // const Department = require("./Department");
 
 const courseSchema = mongoose.Schema({
-    title:{type:String, required:true},
-    code:{type:String, required:true, unique:true, uppercase:true},
-    creditUnits:{type:Number, required:true},
-    department:{type:mongoose.Schema.Types.ObjectId, ref:"Department", required:true},
-    lecturer:{type:mongoose.Schema.Types.ObjectId, ref:"Lecturer"} 
-},{timestamps:true})
+    title: { type: String, required: true },
+    code: { type: String, required: true, unique: true, uppercase: true },
+    creditUnits: { type: Number, required: true },
+    department: { type: mongoose.Schema.Types.ObjectId, ref: "Department", required: true },
+    lecturer: { type: mongoose.Schema.Types.ObjectId, ref: "Lecturer" }
+}, { timestamps: true })
 
 module.exports = mongoose.model("Course", courseSchema);
 
