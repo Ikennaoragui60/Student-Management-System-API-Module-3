@@ -5,6 +5,8 @@ const registrationSchema = mongoose.Schema({
     course:{type:mongoose.Schema.Types.ObjectId, ref:"Course"},
     session:{type:String, required:true},
     status:{type:String}
-},{timestamp:true})
+},{timestamps:true})
+
+registrationSchema.index({student:1, course:1, session:1}, {unique:true});
 
 module.exports = mongoose.model("Registration", registrationSchema);
