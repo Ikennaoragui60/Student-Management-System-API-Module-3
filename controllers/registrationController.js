@@ -7,16 +7,16 @@ exports.createRegistration = async (req, res) => {
         const { student, course, session, status } = req.body;
         const existingStudent = await Student.findById(student);
         if (!existingStudent) {
-            return res.status(404).json({message: "Student not found"});
+            return res.status(404).json({ message: "Student not found" });
         }
         const existingCourse = await Course.findById(course);
         if (!existingCourse) {
-            return res.status(404).json({message: "Course not found"});
+            return res.status(404).json({ message: "Course not found" });
         }
-        const registration = await Registration.create({student,course,session,status});
+        const registration = await Registration.create({ student, course, session, status });
         res.status(201).json(registration);
     } catch (err) {
-        res.status(400).json({ message: err.message});
+        res.status(400).json({ message: err.message });
     }
 };
 

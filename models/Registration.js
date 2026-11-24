@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
 const registrationSchema = mongoose.Schema({
-    student: { type: mongoose.Schema.Types.ObjectId, ref: "Student", required:true },
-    course: { type: mongoose.Schema.Types.ObjectId, ref: "Course", required:true},
+    student: { type: mongoose.Schema.Types.ObjectId, ref: "Student", required: true },
+    course: { type: mongoose.Schema.Types.ObjectId, ref: "Course", required: true },
     session: { type: String, required: true },
     status: { type: String }
 }, { timestamps: true })
