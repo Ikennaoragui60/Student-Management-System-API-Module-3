@@ -14,7 +14,7 @@ exports.createRegistration = async (req, res) => {
             return res.status(404).json({ message: "Course not found" });
         }
         const registration = await Registration.create({ student, course, session, status });
-        res.status(201).json(registration);
+        res.status(201).json({ message: "Registration created successfully", data: registration });
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -23,7 +23,7 @@ exports.createRegistration = async (req, res) => {
 exports.getAllRegistrations = async (req, res) => {
     try {
         const registrations = await Registration.find();
-        res.json(registrations);
+        res.json({ message: "All registrations fetched successfully", data: registrations });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -33,7 +33,7 @@ exports.getRegistration = async (req, res) => {
     try {
         const registration = await Registration.findById(req.params.id);
         if (!registration) return res.status(404).json({ message: "Registration not found" });
-        res.json(registration);
+        res.json({ message: "Registration fetched successfully", data: registration });
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -46,7 +46,7 @@ exports.updateRegistration = async (req, res) => {
             runValidators: true,
         });
         if (!registration) return res.status(404).json({ message: "Registration not found" });
-        res.json(registration);
+        res.json({ message: "Registration updated successfully", data: registration });
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
@@ -56,7 +56,7 @@ exports.deleteRegistration = async (req, res) => {
     try {
         const registration = await Registration.findByIdAndDelete(req.params.id);
         if (!registration) return res.status(404).json({ message: "Registration not found" });
-        res.json({ message: "Registration deleted" });
+        res.json({ message: "Registration deleted successfully" });
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
