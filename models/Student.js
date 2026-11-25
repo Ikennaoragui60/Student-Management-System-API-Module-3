@@ -5,7 +5,14 @@ const studentSchema = new mongoose.Schema({
     lastName: { type: String, required: true },
     email: { type: String, required: true, unique: true, lowercase: true },
     matricNumber: { type: String, required: true, unique: true },
-    level: { type: Number, required: true },
+    level: {
+        type: Number,
+        required: true,
+        enum: {
+            values: [100, 200, 300, 400, 500],
+            message: "Level must be 100, 200, 300, 400 or 500"
+        }
+    },
     department: { type: mongoose.Schema.Types.ObjectId, ref: "Department", required: true }
 }, { timestamps: true })
 
