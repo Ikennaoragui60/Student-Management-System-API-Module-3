@@ -4,9 +4,14 @@ exports.createDepartment = async (req, res) => {
   try {
     const department = await Department.create(req.body);
     res.status(201).json({ message: "Department created successfully", data: department });
-  } catch (err) {
-    res.status(400).json({ message: "Department already exist" });
-  }
+      } catch (err) {
+        if (err.code === 11000) {
+            return res.status(409).json({ message: "Department already exists" });
+        }
+        if (err.name === "ValidationError" || err.name === "CastError") {
+            return res.status(400).json({ message: err.message });
+        }
+        res.status(500).json({ message: err.message });
 };
 
 exports.getAllDepartments = async (req, res) => {
