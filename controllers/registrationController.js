@@ -9,7 +9,7 @@ exports.createRegistration = async (req, res) => {
         if (!existingStudent) {
             return res.status(404).json({ message: "Student not found" });
         }
-        const existingCourse = await Course.findById(course);
+        const existingCourse = await Course.findById(course); 
         if (!existingCourse) {
             return res.status(404).json({ message: "Course not found" });
         }
