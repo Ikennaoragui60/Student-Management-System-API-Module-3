@@ -12,6 +12,7 @@ exports.createCourse = async (req, res) => {
             return res.status(400).json({ message: err.message });
         }
         res.status(500).json({ message: err.message });
+        }
 };
 
 exports.getAllCourses = async (req, res) => {

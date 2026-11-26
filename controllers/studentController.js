@@ -21,6 +21,7 @@ exports.createStudent = async (req, res) => {
             return res.status(400).json({ message: err.message });
         }
         res.status(500).json({ message: err.message });
+    }
 };
 
 exports.getAllStudents = async (req, res) => {
@@ -65,6 +66,7 @@ exports.updateStudent = async (req, res) => {
             return res.status(400).json({ message: err.message });
         }
         res.status(500).json({ message: err.message });
+    }
 };
 
 exports.deleteStudent = async (req, res) => {
