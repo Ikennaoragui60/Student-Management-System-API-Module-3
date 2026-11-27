@@ -3,11 +3,10 @@ env.config();
 const express = require("express");
 const PORT = 2027
 require("./db");
-
 const app = express();
 
 
-app.use(express.json());
+app.use(express.json()); 
 app.use("/students", require("./routes/studentRoutes"))
 app.use("/departments", require("./routes/departmentRoutes"))
 app.use("/courses", require("./routes/courseRoutes"))
