@@ -12,7 +12,7 @@ exports.createLecturer = async (req, res) => {
 exports.getAllLecturers = async (req, res) => {
     try {
         const lecturers = await Lecturer.find();
-        res.json({ message: "All lecturers fetched successfully", data: lecturers });
+        res.json({ message: "All lecturers retrieved successfully", data: lecturers });
     } catch (err) {
         res.status(500).json({ message: err.message });
     }
@@ -22,7 +22,7 @@ exports.getLecturer = async (req, res) => {
     try {
         const lecturer = await Lecturer.findById(req.params.id);
         if (!lecturer) return res.status(404).json({ message: "Lecturer not found" });
-        res.json({ message: "Lecturers fetched successfully", data: lecturer });
+        res.json({ message: "Lecturer retrieved successfully", data: lecturer });
     } catch (err) {
         res.status(400).json({ message: err.message });
     }
