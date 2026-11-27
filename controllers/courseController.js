@@ -3,7 +3,7 @@ const Course = require("../models/Course");
 exports.createCourse = async (req, res) => {
     try {
         const course = await Course.create(req.body);
-        res.status(201).json({ message: "Course created successfully", data: course });
+        res.status(201).json({ message: "New course setup completed", data: course });
         } catch (err) {
         if (err.code === 11000) {
             return res.status(409).json({ message: "Course already exists" });
