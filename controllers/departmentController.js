@@ -1,24 +1,18 @@
 const Department = require("../models/Department");
 
 exports.createDepartment = async (req, res) => {
-  try {
-    const department = await Department.create(req.body);
-    res.status(201).json({ message: "Department created successfully", data: department });
-      } catch (err) {
-        if (err.code === 11000) {
-            return res.status(409).json({ message: "Department already created" });
-        }
-        if (err.name === "ValidationError" || err.name === "CastError") {
-            return res.status(400).json({ message: err.message });
-        }
-        res.status(500).json({ message: err.message });
-      }
+    try {
+        const department = await Department.create(req.body);
+        res.status(201).json({ message: "Department created successfully", data: department });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 };
 
 exports.getAllDepartments = async (req, res) => {
   try {
     const departments = await Department.find();
-    res.json({ message: "All departments retrieved successfully", data: departments });
+    res.json({ message: "All departments fetched successfully", data: departments });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -28,7 +22,7 @@ exports.getDepartment = async (req, res) => {
   try {
     const department = await Department.findById(req.params.id);
     if (!department) return res.status(404).json({ message: "Department not found" });
-    res.json({ message: "Department retrieved successfully", data: department });
+    res.json({ message: "Department fetched successfully", data: department });
   } catch (err) {
     res.status(400).json({ message: err.message });
   }

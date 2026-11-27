@@ -2,17 +2,11 @@ const Course = require("../models/Course");
 
 exports.createCourse = async (req, res) => {
     try {
-     const course = await Course.create(req.body);
-    res.status(201).json({ message: "New course setup completed", data: course });
-     } catch (err) {
-    if (err.code === 11000) {
-            return res.status(409).json({ message: "Course already exists" });
-        }
-    if (err.name === "ValidationError" || err.name === "CastError") {
-            return res.status(400).json({ message: err.message });
-        }
-     res.status(500).json({ message: err.message });
-        }
+        const course = await Course.create(req.body);
+        res.status(201).json({ message: "Course created successfully", data: course });
+    } catch (err) {
+        res.status(400).json({ message: err.message });
+    }
 };
 
 exports.getAllCourses = async (req, res) => {
